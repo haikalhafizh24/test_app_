@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:test_app/detail_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    String massage = 'Halo gaes';
+
     return Scaffold(
       // appBar: AppBar(),
       body: Row(
@@ -101,68 +104,73 @@ class HomeScreen extends StatelessWidget {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(
-                      height: 24,
-                    ),
                   ]),
                 ),
-
                 SizedBox(
                   height: 150,
+                  width: MediaQuery.of(context).size.width,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
-                    children: <Widget>[
+                    children: [
                       Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Image.asset(
-                          'assets/image1.jpg',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Image.asset(
-                          'assets/image1.jpg',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Image.asset(
-                          'assets/image1.jpg',
-                          fit: BoxFit.cover,
+                        padding: const EdgeInsets.all(16.0),
+                        child: Row(
+                          children: [
+                            ClipRRect(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(8)),
+                              child: Image.asset(
+                                'assets/image1.jpg',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 12,
+                            ),
+                            ClipRRect(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(8)),
+                              child: Image.asset(
+                                'assets/image2.jpg',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 12,
+                            ),
+                            ClipRRect(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(8)),
+                              child: Image.asset(
+                                'assets/image1.jpg',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   ),
                 ),
-
-                // SizedBox(
-                //   height: 100,
-                //   child: ListView(
-                //     scrollDirection: Axis.horizontal,
-                //     children: <Widget>[
-                //       Image.asset(
-                //         'assets/image1.jpg',
-                //         fit: BoxFit.cover,
-                //       ),
-                //       const SizedBox(
-                //         width: 12,
-                //       ),
-                //       Image.asset(
-                //         'assets/image1.jpg',
-                //         fit: BoxFit.cover,
-                //       ),
-                //       const SizedBox(
-                //         width: 12,
-                //       ),
-                //       Image.asset(
-                //         'assets/image1.jpg',
-                //         fit: BoxFit.cover,
-                //       ),
-                //     ],
-                //   ),
-                // ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DetailScreen(massage)));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size.fromHeight(50),
+                    backgroundColor: Colors.blue,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: const Text(
+                    "Selanjutnya",
+                  ),
+                ),
               ],
             ),
           )
